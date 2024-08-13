@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
-import { StyleSheet, Text, View,FlatList, ScrollView } from 'react-native';
+import { StyleSheet, Text, View,FlatList, ScrollView, ImageBackground } from 'react-native';
+import bckImg from './assets/starships.png'
 
   const request = async(Callback) =>{
     const response = await fetch ('https://swapi.dev/api/people/');
@@ -17,8 +18,13 @@ export default function App() {
   },[]);
   
   return (
+   
     <ScrollView>
+    
 <View style={styles.container}>
+<ImageBackground 
+      source={bckImg}
+    >
       <Text style={styles.title}>Star Wars</Text>
      <FlatList 
       data={registros}
@@ -42,6 +48,7 @@ export default function App() {
      />
      
      <StatusBar style='auto'/>
+     </ImageBackground>
     </View>
     </ScrollView>
   );
@@ -50,14 +57,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    top: 200,
-    flexDirection: "center",
+    flexDirection:'column' ,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: "black",
   },
   texts:{
-    fontSize: 18,
+    fontSize: 22,
     backgroundColor: 'gray',
     padding: 10,
     margin: 8,
@@ -67,5 +74,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         marginVertical: 50,
         marginBottom: 10,
+        color: 'white',
+        marginLeft: 120,
       },
 });
